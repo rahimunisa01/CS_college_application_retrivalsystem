@@ -2,12 +2,18 @@
 
 To run: In the application CD_college_application_retrivalsystem
 In bash
-``` pip install -r requirements.txt ```
+
+```
+
+pip install -r requirements.txt
+```
 then run
 ```
 python scripts/prepare_urls.py
 python scripts/scrape_deadlines.py
 ```
 then 
-``` streamlit run app.py
+```
+
+streamlit run app.py
 ```
