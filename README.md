@@ -15,5 +15,5 @@ python scripts/scrape_deadlines.py
 then 
 ```
 
-streamlit run app.py
+python -m streamlit run app.py
 ```

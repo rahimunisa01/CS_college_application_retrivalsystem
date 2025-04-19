@@ -1,7 +1,8 @@
 beautifulsoup4
 requests
-scikit-learn
+rank-bm25
 numpy
 streamlit
 selenium
 #webdriver-manager (optional)
+# scikit-learn (For TF-IDF and cosine similarity)

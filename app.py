@@ -1,3 +1,4 @@
+import traceback
 import streamlit as st
 from scripts.search import search
 import json
@@ -32,4 +33,8 @@ if query:
                 st.write(res['summary'])
                 st.caption(f"Relevance Score: {res['score']:.3f}")
         except Exception as e:
-            st.error(f"❌ Error: {e}")
+            #st.error(f"❌ Error: {e}")
+                # get the full traceback as a string
+            tb = traceback.format_exc()
+            # display it in Streamlit
+            st.error(f"❌ An exception occurred:\n```\n{tb}\n```")
