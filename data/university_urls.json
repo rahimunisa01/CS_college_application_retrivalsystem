@@ -9,11 +9,11 @@
     },
     {
         "name": "Carnegie Mellon University",
-        "url": "https://www.ml.cmu.edu/prospective-students/apply.html"
+        "url": "https://admissions.scs.cmu.edu/portal/apply_gr"
     },
     {
         "name": "UC Berkeley",
-        "url": "https://eecs.berkeley.edu/academics/graduate/masters"
+        "url": "https://grad.berkeley.edu/program/computer-science/"
     },
     {
         "name": "Princeton University",
@@ -25,11 +25,11 @@
     },
     {
         "name": "Caltech",
-        "url": "https://www.cms.caltech.edu/academics/grad/cs"
+        "url": "https://www.cms.caltech.edu/academics/grad/grad_cs"
     },
     {
         "name": "Cornell University",
-        "url": "https://www.cs.cornell.edu/ms/apply"
+        "url": "https://www.cs.cornell.edu/masters/apply/application"
     },
     {
         "name": "UCLA",
@@ -37,23 +37,23 @@
     },
     {
         "name": "University of Washington",
-        "url": "https://www.cs.washington.edu/academics/grad/mcs"
+        "url": "https://www.uwb.edu/stem/graduate/mscsse/admissions"
     },
     {
         "name": "University of Illinois Urbana-Champaign",
-        "url": "https://cs.illinois.edu/admissions/graduate/apply"
+        "url": "https://siebelschool.illinois.edu/admissions/graduate/applications-process-requirements"
     },
     {
         "name": "Georgia Institute of Technology",
-        "url": "https://www.cc.gatech.edu/future/graduate/mscs"
+        "url": "https://www.cc.gatech.edu/ms-computer-science-admission-requirements"
     },
     {
         "name": "Yale University",
-        "url": "https://cpsc.yale.edu/graduate/graduate-admissions"
+        "url": "https://gsas.yale.edu/programs-of-study/computer-science"
     },
     {
         "name": "Johns Hopkins University",
-        "url": "https://www.cs.jhu.edu/graduate-studies/graduate-admissions/"
+        "url": "https://www.cs.jhu.edu/academic-programs/graduate-studies/"
     },
     {
         "name": "Columbia University",
@@ -61,7 +61,7 @@
     },
     {
         "name": "New York University (NYU)",
-        "url": "https://cs.nyu.edu/home/graduate/admissions.html"
+        "url": "https://engineering.nyu.edu/admissions/graduate/apply/application-deadlines"
     },
     {
         "name": "University of Texas at Austin",
@@ -69,15 +69,15 @@
     },
     {
         "name": "UC San Diego",
-        "url": "https://cse.ucsd.edu/graduate/graduate-admissions"
+        "url": "https://cse.ucsd.edu/graduate/cse-graduate-application-checklist"
     },
     {
         "name": "University of Pennsylvania",
-        "url": "https://www.cis.upenn.edu/graduate/masters-admissions/"
+        "url": "https://www.cis.upenn.edu/graduate/program-offerings/master-of-computer-and-information-technology/"
     },
     {
         "name": "University of Chicago",
-        "url": "https://masters.cs.uchicago.edu/page/admissions"
+        "url": "https://masters.cs.uchicago.edu/admissions/dates-deadlines/"
     },
     {
         "name": "University of Southern California",
@@ -89,11 +89,11 @@
     },
     {
         "name": "UC Santa Barbara",
-        "url": "https://cs.ucsb.edu/graduate/graduate-admissions"
+        "url": "https://cs.ucsb.edu/education/graduate/how-to-apply"
     },
     {
         "name": "UC Davis",
-        "url": "https://cs.ucdavis.edu/graduate/apply"
+        "url": "https://grad.ucdavis.edu/program-application-deadlines"
     },
     {
         "name": "University of Wisconsin\u2013Madison",
@@ -109,11 +109,11 @@
     },
     {
         "name": "Duke University",
-        "url": "https://gradschool.duke.edu/academics/programs/computer-science/"
+        "url": "https://gradschool.duke.edu/academics/programs-degrees/computer-science-ms/"
     },
     {
         "name": "Brown University",
-        "url": "https://cs.brown.edu/grad/masters/apply/"
+        "url": "https://graduateprograms.brown.edu/graduate-program/computer-science-scm"
     },
     {
         "name": "University of Florida",
