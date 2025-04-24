@@ -172,5 +172,5 @@ According to our grading contract, we successfully completed the following:
 ### **1.8 Team Member Contributions**
 
 - **Member A (International Student)**: 
-- **Member B (International Student)**: 
+- **Rahimunisa Begum**: Initial Setup, Webscraping the college websites, streamlit UI
 - **Member C (Undergraduate applying to grad school)**: 
