@@ -173,4 +173,4 @@ According to our grading contract, we successfully completed the following:
 
 - **Member A (International Student)**: 
 - **Rahimunisa Begum**: Initial Setup, Webscraping the college websites, streamlit UI
-- **Member C (Undergraduate applying to grad school)**: 
+- **Colin Linehan**: BM25 retreival with recency weight
