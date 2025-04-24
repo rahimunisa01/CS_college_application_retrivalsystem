@@ -13,18 +13,20 @@ def load_documents(path="data/documents/docs.json"):
     return docs
 
 def build_index():
-    # Using TF-IDF instead of BM25
-    '''
     docs = load_documents()
     print(f"Loaded {len(docs)} documents.")
-    corpus = [doc["text"] for doc in docs]
-    vectorizer = TfidfVectorizer(stop_words='english')
-    vectors = vectorizer.fit_transform(corpus)
-    return vectorizer, vectors, docs
-    '''
-    # Using BM25 instead of TF-IDF
-    docs = load_documents()
-    print(f"Loaded {len(docs)} documents.")
+
+    for doc in docs:
+        text = doc["text"].lower()
+        additions = []
+        if "m.s.e." in text or "mse" in text:
+            additions.append("computer science ms master's")
+        if "eecs" in text:
+            additions.append("computer science cs")
+        if additions:
+            doc["text"] += " " + " ".join(additions)
+
     corpus = [doc["text"].split() for doc in docs]
     bm25 = BM25Okapi(corpus)
     return bm25, docs
+

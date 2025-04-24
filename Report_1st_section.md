@@ -52,12 +52,12 @@ These examples demonstrate that supporting effective information retrieval in th
 
 From above, we observed that user queries often fall into the following categories:
 
-- **By program or keyword** – e.g., *“Computer Science Masters Application Deadlines”*
-- **By intake term** – e.g., *“Fall 2025”*, *“Spring 2026”*
-- **By specific time filter** – e.g., *“Deadlines after Christmas 2025”*, *“Deadlines today”*
-- **By school ranking** – e.g., *“Top 10 US News CS programs 2025 deadlines”*
-- **By institution type** – e.g., *“Ivy League MSCS deadlines”*
-- **By urgency** – e.g., *“Masters deadlines today”*, *“early application deadlines”*
+- program or keyword
+- intake term
+- specific time filter
+- school ranking
+- institution type
+- urgency
 
 These categories reflect the practical needs and time-sensitive nature of the graduate school application process, which our system is designed to address.
 
