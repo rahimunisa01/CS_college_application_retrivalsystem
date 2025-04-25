@@ -93,25 +93,6 @@ The expected number of relevant results varies by query type and user expectatio
 - For general queries, users expect about 10 results spanning diverse institutions.
 - For filtered or specific queries (e.g., term-specific, Ivy-only, deadlines today), users prefer around 5 results that are more precisely tailored.
 
-Below is a summary table illustrating expected result quantities by query type:
-
-### Query Types and Expected Number of Relevant Results
-
-| Query Category                                      | Example Query                                             | Expected Number of Relevant Results | Notes                                                                 |
-|-----------------------------------------------------|-----------------------------------------------------------|-------------------------------------|-----------------------------------------------------------------------|
-| General Program Search                              | Computer Science Masters Application Deadlines            | 10–20                                | Broad queries; users expect a variety of schools and sources         |
-| Term-Specific                                       | Computer Science Masters Application Deadlines Fall 2025  | 8–12                                | Must filter by intake cycle                                          |
-| Time-Filtered (e.g., after a date)                  | Deadlines after Christmas 2025                            | 5–10                                | Requires parsing and comparison of dates                             |
-| Early Application Focus                             | Masters Deadlines for Early Applications                  | 5–10                                | Prioritize priority/early action deadlines                           |
-| National Scope for a Specific Program               | MSCS deadlines US                                          | 8–15                               | Comprehensive results from many U.S. universities                    |
-| Spring Intake                                       | Master’s applications in US for Spring 2026               | 5–10                                | Requires filtering by semester/start term                            |
-| Ivy League Filtered                                 | Ivys MSCS US application dates                            | 6–8                                 | Must exclude non-Ivy institutions                                    |
-| Top-Ranked Programs Only                            | 2025 TOP 10 US News Universities CS deadlines             | 6–10                                | Filtered by ranking; must ensure accuracy and exclusivity            |
-| Latest/Recently Updated Deadlines                   | Latest Computer Science Masters Application Deadlines     | 5–10                                | Must retrieve the most up-to-date information                        |
-| Urgent/Imminent Deadline Search                     | Master’s in computer science deadlines today              | 3–5                                 | Show only deadlines due today or within a day or two                 |
-
-This relevance and quantity framework helps shape how we evaluate our system’s performance, how we design query handling and result filtering, and how we annotate and assess system output. Supporting accurate and appropriately scoped results is essential to ensuring usability and trustworthiness for student users who rely on this information to make high-stakes academic decisions.
-
 ---
 
 ### **1.4 Result Organization**
@@ -136,9 +117,9 @@ In addition to deadline-based ranking, we also plan to support alternative sorti
 ### **1.5 Evaluation Metrics**
 
 To evaluate our system, we consider:
-- **Precision@k**: How many of the top-k results are truly relevant
-- **NDCG** (Normalized Discounted Cumulative Gain): Measures ranking quality
-- **Recall** (if using a known dataset): Proportion of all relevant documents retrieved
+- **Precision@k**: How many of the top-k results are truly relevant. This is particularly important for our use case, since users often only examine the top few results. 
+- **NDCG@k**: Measures ranking quality. In our task, deadlines that exactly match the query intent should be prioritized, so graded relevance and rank position matter.
+- **Recall**: Proportion of all relevant documents retrieved. This is useful for general queries.
 
 Due to the exploratory nature of the task and lack of a gold-standard dataset, our evaluation relies on manual relevance judgments.
 
@@ -148,13 +129,13 @@ Due to the exploratory nature of the task and lack of a gold-standard dataset, o
 
 Our system consists of several components:
 
-- `prepare_urls.py`: Initializes the list of university and program URLs.
-- `scrape_deadlines.py`: Crawls web pages and extracts deadline information using BeautifulSoup.
-- `indexer.py`: Indexes the scraped data into a searchable format.
-- `search.py`: Uses TF-IDF scoring to rank documents based on query relevance.
-- `app.py`: Provides a Flask web interface for users to input queries and view ranked results.
+- `prepare_urls.py`: Initializes and stores a list of university program URLs for CS master's application pages in JSON format.
+- `scrape_deadlines.py`: Uses Selenium to crawl university admissions pages, render dynamic content, and extract text containing application deadlines for CS master's programs.
+- `indexer.py`: Loads the scraped university deadline documents from JSON, processes their text, and builds a BM25 index using rank_bm25. This index enables efficient retrieval of documents based on query term relevance.
+- `search.py`: Implements document ranking using BM25 and recency-based weighting. A legacy TF-IDF implementation is included but commented out.
+- `app.py`: Provides a Streamlit-based web interface for users to enter queries and view ranked application deadline results.
 
-We tested the crawler on around 100 program pages and achieved a scraping success rate of ~80%. The search engine returns top results in under 1 second, even with basic infrastructure.
+We tested the crawler on 30 program pages and achieved a scraping success rate of 100%. The search engine returns top results in under 1 second, even with basic infrastructure.
 
 ---
 
@@ -165,12 +146,11 @@ According to our grading contract, we successfully completed the following:
 - Custom search engine with ranking support
 - Frontend web interface for user interaction
 - Relevance judgment and performance analysis
-- Group collaboration with peer review
 
 ---
 
 ### **1.8 Team Member Contributions**
 
-- **Member A (International Student)**: 
+- **Danchen He**: Project report, testing search queries for evaluation
 - **Rahimunisa Begum**: Initial Setup, Webscraping the college websites, streamlit UI
 - **Colin Linehan**: BM25 retreival with recency weight
