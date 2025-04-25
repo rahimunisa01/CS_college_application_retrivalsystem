@@ -1,4 +1,4 @@
-## **1. Master’s Program Deadline Search Engine**
+## Master’s Program Deadline Search Engine
 
 ### **1.1 Task Overview and Importance**
 
@@ -88,30 +88,39 @@ We also observed that relevance is not strictly binary. For example, a general �
 
 #### **Expected Number of Relevant Results**
 
-The expected number of relevant results varies by query type and user expectations:
+The expected number of relevant results varies depending on query type and user intent:
 
-- For general queries, users expect about 10 results spanning diverse institutions.
-- For filtered or specific queries (e.g., term-specific, Ivy-only, deadlines today), users prefer around 5 results that are more precisely tailored.
+For general queries (e.g., “CS Master’s deadlines”), users typically expect around 5 results that cover a range of institutions.
+
+For more specific or filtered queries (e.g., by term, specific university, or ranking), users may expect fewer but more precisely matched results.
+
+Although our interface consistently displays the top 5 ranked results, we include relevance scores to help users interpret how well each result matches their query. This allows users to quickly assess whether a result is a strong match or only loosely related.
 
 ---
 
 ### **1.4 Result Organization**
 
-Results are displayed in a ranked list, sorted by deadlines by default. We also plan to support alternative sorting modes, such as alphabetically by university or grouped by country.
+Results in our system are presented as a ranked list, with the ranking determined by a combination of BM25 relevance scoring and recency-based weighting. This prioritizes documents that both match the query terms semantically and include more recent application deadlines, which are often more relevant and actionable for users.
+
+In our system, results are ranked based on a combination of three key factors:
+
+BM25 Relevance Score:
+The core ranking signal comes from BM25 scoring, computed using bm25.get_scores(query_terms). This score captures the lexical relevance between the query terms and the content of each document.
+
+Recency Weight:
+Since application deadlines are time-sensitive, we extract all recognizable date strings from each document and compute a recency-based weight. The most recent deadline is used, and its score is decayed exponentially by the number of days from the current date:
+  ```python
+  weight = math.exp(-decay * days_old)
+  ```
+This ensures that more recent or upcoming deadlines are favored in the ranking.
 
 Each result includes:
 - Program name
 - Institution name
 - Application deadline
-- A clickable link to the original source
+- A relevance score to indicate confidence
+- A screenshot is stored during scraping, aiding manual verification
 
-In addition to deadline-based ranking, we also plan to support alternative sorting and grouping options to accommodate different user preferences:
-
-- Alphabetical order by university name: helpful for users who are already targeting specific institutions.
-
-- Grouped by country or region: useful for international students considering geographical constraints or visa policies.
-
-- Filterable by intake term, university tier, or deadline type (e.g., early decision, final round deadline).
 ---
 
 ### **1.5 Evaluation Metrics**
@@ -141,11 +150,19 @@ We tested the crawler on 30 program pages and achieved a scraping success rate o
 
 ### **1.7 Completed Milestones**
 
-According to our grading contract, we successfully completed the following:
-- Web crawler to collect real-world data
-- Custom search engine with ranking support
-- Frontend web interface for user interaction
-- Relevance judgment and performance analysis
+According to our grading contract, we successfully completed the following milestones in building and evaluating our custom information retrieval system:
+
+- **Web crawler to collect real-world data**  
+  We developed a headless browser-based crawler using Selenium to extract live deadline-related information from official university websites. The content is parsed and stored in a structured format within docs.json, forming the core dataset for indexing and retrieval. We also implemented automatic screenshot saving to support debugging and manual validation.
+
+- **Custom search engine with ranking support**  
+  Our search engine ranks results using a combination of BM25 relevance scoring and recency-based weighting. BM25 ensures that results match the query terms semantically, while recency weighting prioritizes application deadlines that are more current or upcoming. This hybrid ranking model helps surface the most relevant and timely results for users planning their applications.
+
+- **Frontend web interface for user interaction**  
+  We implemented a fully functional web interface using Streamlit. Users can enter natural language queries and receive a ranked list of application deadlines. Each result includes the program title, institution name, and extracted deadlines in a human-readable format. The interface is responsive and easy to use, designed for international students and applicants with varying levels of technical experience.
+
+- **Relevance judgment and performance analysis**  
+  We evaluated our system using a set of manually crafted queries reflecting real user needs. For each query, we performed relevance judgments on the output and documented both successful matches and limitations. Our findings are summarized in a report, along with proposed improvements.
 
 ---
 
@@ -154,3 +171,7 @@ According to our grading contract, we successfully completed the following:
 - **Danchen He**: Project report, testing search queries for evaluation
 - **Rahimunisa Begum**: Initial Setup, Webscraping the college websites, streamlit UI
 - **Colin Linehan**: BM25 retreival with recency weight
+
+---
+
+Github: https://github.com/rahimunisa01/CS_college_application_retrivalsystem.git
